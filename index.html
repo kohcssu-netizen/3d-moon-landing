@@ -485,7 +485,7 @@
             const starField = new THREE.Points(starsGeometry, starsMaterial);
             scene.add(starField);
 
-            // Telemetry UI References
+            // landing UI References
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
 
@@ -520,7 +520,7 @@
                 return slopeDeg;
             }
 
-            function updateTelemetry(lat, lon, localPoint) { 
+            function updatelanding(lat, lon, localPoint) { 
                 statusVal.innerText = "LOCKED";
                 statusVal.style.color = "#00ffcc";
 
@@ -592,7 +592,7 @@
                 const z = Math.sin(phi) * Math.cos(theta);
 
                 const localPoint = new THREE.Vector3(x, y, z).normalize();
-                updateTelemetry(lat, lon, localPoint);
+                updatelanding(lat, lon, localPoint);
                 focusOnPoint(localPoint);
             };
 
@@ -611,7 +611,7 @@
                     const latitude = Math.asin(localPoint.y) * (180 / Math.PI);
                     const longitude = Math.atan2(localPoint.z, localPoint.x) * (180 / Math.PI);
 
-                    updateTelemetry(latitude, longitude, localPoint);
+                    updatelanding(latitude, longitude, localPoint);
                 }
             }, false);
 
